@@ -57,3 +57,30 @@ class Admin extends User{
 const user = new User('Mike', 'MK_18', 18);
 const admin = new Admin('', 'NRG', 22);
 // console.log(admin.getUserName(user1));
+
+class newUser {
+   #phone
+   constructor(name, phone){
+   this.name = name;
+   this.#phone = phone;
+   }
+   getPhone(isAdmin){
+      if(isAdmin===true){
+         return this.#phone;
+      }
+      else{
+         let secretPhone = this.#phone.split('');
+         for(let i = 4; i < secretPhone.length - 3; i++){
+            secretPhone[i] = '*';
+         }
+         console.log(secretPhone.join(''));
+         return secretPhone.join('');
+      }
+   }
+}
+let uuser1 = new newUser('Mike', '067-888-88-99');
+let uuser2 = new newUser('Tom', '099-888-88-99');
+console.log(uuser1.getPhone(false));
+console.log(uuser2.getPhone(false));
+console.log(uuser1.getPhone(true));
+console.log(uuser2.getPhone(true));
